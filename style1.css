@@ -1,3 +1,9 @@
+/* 
+  General Reset and Body Styles
+  - Resets margin and padding for all elements
+  - Sets box-sizing to border-box for consistent sizing
+  - Styles the body with a light gray background and hides overflow
+*/
 * {
     margin: 0;
     padding: 0;
@@ -5,138 +11,175 @@
 }
 
 body {
-    background: #eaeaea;
-    overflow: hidden;
+    background: #eaeaea; /* Light gray background color */
+    overflow: hidden; /* Prevents scrollbars from appearing */
 }
 
+/* 
+  Main Container Styles
+  - Centers the slideshow container in the viewport
+  - Sets fixed dimensions and applies a shadow for depth
+*/
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    height: 600px;
-    background: #f5f5f5;
-    box-shadow: 0 30px 50px #dbdbdb;
+    position: absolute; /* Positioning relative to the nearest positioned ancestor */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjusts for the width and height of the container */
+    width: 1000px; 
+    height: 600px; 
+    background: #f5f5f5; /* Light background color */
+    box-shadow: 0 30px 50px #dbdbdb; /* Shadow effect for depth */
 }
 
+/* 
+  Slide Item Styles
+  - Defines the appearance and positioning of each slide item
+  - Includes transitions for smooth effects when items change
+*/
 .container .slide .item {
-    width: 200px;
-    height: 300px;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    border-radius: 20px;
-    box-shadow: 0 30px 50px #505050;
-    background-position: 50% 50%;
-    background-size: cover;
-    display: inline-block;
-    transition: 0.5s;
+    width: 200px; /* Width of each slide item */
+    height: 300px; /* Height of each slide item */
+    position: absolute; /* Allows positioning within the container */
+    top: 50%; /* Center vertically within the container */
+    transform: translate(0, -50%); /* Adjusts vertical position */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 30px 50px #505050; /* Shadow effect for depth */
+    background-position: 50% 50%; /* Center background image */
+    background-size: cover; /* Cover the entire area with the background image */
+    display: inline-block; /* Allows items to be displayed inline */
+    transition: 0.5s; /* Smooth transition for hover effects or changes */
 }
 
+/* 
+  Specific Positioning for Slide Items
+  - Positions individual slide items within the container based on their order
+*/
 .slide .item:nth-child(1),
 .slide .item:nth-child(2) {
-    top: 0;
-    left: 0;
-    transform: translate(0, 0);
-    border-radius: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; /* Align to the top of the container */
+    left: 0; /* Align to the left of the container */
+    transform: translate(0, 0); /* Reset transformation for these items */
+    border-radius: 0; /* Remove rounded corners for these items */
+    width: 100%; /* Full width for these items */
+    height: 100%; /* Full height for these items */
 }
 
 .slide .item:nth-child(3) {
-    left: 50%;
+    left: 50%; /* Position in the middle of the container horizontally */
 }
 
 .slide .item:nth-child(4) {
-    left: calc(50% + 220px);
+    left: calc(50% + 220px); /* Offset to the right by a fixed amount */
 }
 
 .slide .item:nth-child(5) {
-    left: calc(50% + 440px);
+    left: calc(50% + 440px); /* Further offset to the right by a fixed amount */
 }
 
 .slide .item:nth-child(n+6) {
-    left: calc(50% + 660px);
+    left: calc(50% + 660px); /* Position additional items further right, initially hidden with opacity set to zero */
     opacity: 0;
 }
 
+/* 
+  Content Styling within Slide Items
+  - Controls how titles and descriptions are displayed within each slide item
+*/
 .item .content {
     position: absolute;
-    top: 40%;
-    left: 100px;
-    transform: translateY(-50%);
-    width: 300px;
-    text-align: center;
-    color:white;
+    top: 40%; 
+    left: 100px; 
+    transform: translateY(-50%); 
+    width: 300px; 
+    text-align: center; 
+    color:white; 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 40px;
-    display: none;
-    animation: animate 1s ease-in-out 1 forwards;
+    font-size: 40px; 
+    display: none; 
+    animation: animate 1s ease-in-out 1 forwards; /* Animation on load for content visibility */ 
 }
 
+/* Display content for the second slide item only initially */ 
 .slide .item:nth-child(2) .content {
     display: block;
 }
 
+/* Description styling within each slide item (hidden by default) */ 
 .item .des{
-
     display: none;
 }
 
+/* 
+   General Content Styling
+   - Controls overall appearance and animation of content elements
+*/
 .content {
-    text-align: right;
-    margin-bottom: 200px;
-    opacity: 0;
-    color: aquamarine;
-    animation: animate 1s ease-in-out 0.3s 1 forwards;
-    display: none;
+   text-align: right;
+   margin-bottom: 200px;
+   opacity: 0;
+   color: aquamarine;
+   animation: animate 1s ease-in-out 0.3s 1 forwards;
+   display: none;
 }
 
+/* Button styling within content */ 
 .content button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    animation: animate 1s ease-in-out 0.6s 1 forwards;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+   padding: 10px 20px;
+   border: none;
+   cursor: pointer;
+   opacity: 0;
+   animation: animate 1s ease-in-out 0.6s 1 forwards;
+   position: absolute;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
 }
 
+/* 
+   Keyframes for Animation Effects
+   - Defines how elements transition into view with opacity and position changes
+*/
 @keyframes animate {
-    from {
-        opacity: 0;
-        transform: translate(0, 100px);
-        filter: blur(33px);
-    }
-    to {
-        opacity: 1;
-        transform: translate(0);
-        filter: blur(0);
-    }
+   from {
+       opacity: 0;
+       transform: translate(0, 100px);
+       filter: blur(33px); /* Blurs content on entry animation */ 
+   }
+   to {
+       opacity: 1;
+       transform: translate(0);
+       filter: blur(0); /* Clear blur at end of animation */ 
+   }
 }
 
+/* 
+   Button Container Styles
+   - Centers navigation buttons at the bottom of the container
+*/
 .button {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    bottom: 20px;
+   width: 100%;
+   text-align: center;
+   position:absolute;
+   bottom :20px;
 }
 
+/* 
+   Individual Button Styles within Button Container
+   - Defines appearance and hover effects for navigation buttons
+*/
 .button button {
-    width: 40px;
-    height: 35px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin: 0 5px;
-    border: 1px solid #000;
-    transition: 0.3s;
+   width :40px;
+   height :35px;
+   border-radius :8px;
+   border :none;
+   cursor:pointer;
+   margin :0 5px;
+   border :1px solid #000; 
+   transition :0.3s; 
 }
 
+/* Hover effects for buttons */ 
 .button button:hover {
-    background: #ababab;
-    color: #fff;
+   background :#ababab; 
+   color :#fff; 
 }
